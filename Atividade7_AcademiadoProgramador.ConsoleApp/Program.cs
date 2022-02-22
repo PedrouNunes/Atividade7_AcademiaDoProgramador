@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Atividade7_AcademiadoProgramador.ConsoleApp
 {
@@ -6,7 +7,7 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
     {
         static void Main(string[] args)
         {
-            static void maiorTestagem(ref int maior, ref int[] numeros)
+            static void maiorTestagem(ref double maior, ref double[] numeros)
             {
                 for (int i = 0; i < 10; i++)
                 {
@@ -16,7 +17,7 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
                    }
                 }
             }
-            static void maior2Testagem(ref int maior2, ref int[] numeros, ref int maior)
+            static void maior2Testagem(ref double maior2, ref double[] numeros, ref double maior)
             {
                 for (int i = 0; i < 10; i++)
                 {
@@ -26,8 +27,7 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
                     }
                 }
             }
-
-            static void maior3Testagem(ref int maior3, ref int[] numeros, ref int maior2)
+            static void maior3Testagem(ref double maior3, ref double[] numeros, ref double maior2)
             {
                 for (int i = 0; i < 10; i++)
                 {
@@ -37,41 +37,59 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
                     }
                 }
             }
-
-            //static void menorTestagem(out int menor, out int[] numeros)
-            //{
-            //    menor = 9999999;
-            //    for (int i = 0; i < 10; i++)
-            //    {
-            //        if (numeros[i] < menor)
-            //        {
-            //            menor = numeros[i];
-            //        }
-            //    }
-            //}
-
-            static double media(int[] numeros)
+            static void menorTestagem(double[] numeros, out double menor)
             {
-                //int soma = 0;
-                int cont = 0;
-                double media;
+                menor = 9999999;
+                for (int i = 0; i < 10; i++)
+                {
+                    if (numeros[i] < menor)
+                    {
+                        menor = numeros[i];
+                    }
+                }
+            }
+            static double media(double[] numeros)
+            {
+                double soma = 0;
                 for (int i = 0; i < numeros.Length; i++)
                 {
-                    cont = cont + numeros[i];
+                    soma = soma + numeros[i];
+                }
+                return soma / numeros.Length;
+            }
+            static void negativo(double[] numeros)
+            {
+                String negativos = "";
+                for (int i = 0; i < numeros.Length; i++)
+                {
+                    if (numeros[i] < 0)
+                    {
+                        negativos = negativos + numeros[i];
+                    }
+                }
+                char[] numerosNegativos = negativos.ToCharArray();
+                for (int i = 0; i < numerosNegativos.Length; i++)
+                {
+                    if (i < numerosNegativos.Length)
+                    {
+                        Console.Write(numerosNegativos[i] + " ");
+                    }
+                    else
+                    {
+                        Console.WriteLine(numerosNegativos[i] + " ");
+                    }
                 }
 
-                media = cont / numeros.Length;
-                return media;
             }
 
-            int[] numeros = new int[10];
-            int maior = 0;
-            //int menor;
+            double[] numeros = new double[10];
+            double maior = 0;
+            double menor;
 
             for (int i = 0; i < 10; i++)
             {
                 Console.Write("Digite o numero " + i + ": ");
-                numeros[i] = Convert.ToInt32(Console.ReadLine());
+                numeros[i] = Convert.ToDouble(Console.ReadLine());
             }
 
             maiorTestagem(ref maior, ref numeros);
@@ -80,32 +98,51 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
 
             Console.WriteLine();
 
-            int maior2 = 0;
+            double maior2 = 0;
             maior2Testagem(ref maior2, ref numeros, ref maior);
             Console.WriteLine();
             Console.Write("O segundo maior numero é o: " + maior2);
 
             Console.WriteLine();
 
-            int maior3 = 0;
+            double maior3 = 0;
             maior3Testagem(ref maior3, ref numeros, ref maior2);
             Console.WriteLine();
             Console.Write("O terceiro maior numero é o: " + maior3);
-            //menorTestagem(out menor, out numeros);
-            //Console.WriteLine();
-            //Console.Write("O maior numero é o: " + menor);
-
 
             Console.WriteLine();
             Console.WriteLine();
+
+            menorTestagem(numeros, out menor);
+            Console.Write("O menor numero é o: " + menor);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
             Console.Write("A média aritmética é: " + media(numeros));
+
             Console.WriteLine();
             Console.WriteLine();
+            Console.Write("Numeros negativos: ");
+            negativo(numeros);
+
+            Console.WriteLine();
+            Console.WriteLine();
+
             Console.Write("Sequencia de numeros: ");
             for (int i = 0; i < 10; i++)
             {
-                Console.Write(numeros[i] + " ");
+                Console.Write(numeros[i] + ", ");
             }
+
+            Console.WriteLine();
+            Console.WriteLine();
+
+           // Console.Write("Digite um valor para ser removido: ");
+           // double remover = Convert.ToDouble(Console.ReadLine());
+
+           // numeros = numeros.Where((source, index) index != remover).ToArray();
+
 
         }
     }
