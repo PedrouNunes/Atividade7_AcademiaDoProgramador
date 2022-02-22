@@ -68,15 +68,22 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
                     }
                 }
                 char[] numerosNegativos = negativos.ToCharArray();
+
                 for (int i = 0; i < numerosNegativos.Length; i++)
                 {
-                    if (i < numerosNegativos.Length)
+                    if (i % 2 == 0)
                     {
-                        Console.Write(numerosNegativos[i] + " ");
+                        Console.Write(numerosNegativos[i]);
                     }
                     else
                     {
-                        Console.WriteLine(numerosNegativos[i] + " ");
+                        if(i % 2 != 0 && i < numerosNegativos.Length - 1){
+                            Console.Write(numerosNegativos[i] + ", ");
+                        }
+                        else
+                        {
+                            Console.Write(numerosNegativos[i]);
+                        }
                     }
                 }
 
@@ -132,17 +139,30 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
             Console.Write("Sequencia de numeros: ");
             for (int i = 0; i < 10; i++)
             {
-                Console.Write(numeros[i] + ", ");
+                if (i < 9)
+                {
+                    Console.Write(numeros[i] + ", ");
+                }
+                else
+                {
+                    Console.Write(numeros[i]);
+                }
+
             }
 
             Console.WriteLine();
             Console.WriteLine();
 
-           // Console.Write("Digite um valor para ser removido: ");
-           // double remover = Convert.ToDouble(Console.ReadLine());
+            //char[] remove = numeros.ToArray();
+            //Console.Write("Digite um valor para ser removido: ");
+            //double remover = Convert.ToDouble(Console.ReadLine());
 
-           // numeros = numeros.Where((source, index) index != remover).ToArray();
+            //numeros = numeros.Where((source, numeros), numeros != remover).ToArray();
 
+            //foreach (double remover in numeros)
+            //{
+            //    Console.WriteLine(valu);
+            //}
 
         }
     }
