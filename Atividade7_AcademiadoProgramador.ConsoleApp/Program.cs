@@ -112,6 +112,20 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
                 numeros = listaComORemovido;
 
             }
+            static void exibir(double[] numeros)
+            {
+                for (int i = 0; i < numeros.Length; i++)
+                {
+                    if (i < numeros.Length - 1)
+                    {
+                        Console.Write(numeros[i] + ", ");
+                    }
+                    else
+                    {
+                        Console.Write(numeros[i]);
+                    }
+                }
+            }
 
             double[] numeros = new double[10];
             double maior = 0;
@@ -161,17 +175,7 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
             Console.WriteLine();
 
             Console.Write("Sequencia de numeros: ");
-            for (int i = 0; i < 10; i++)
-            {
-                if (i < 9)
-                {
-                    Console.Write(numeros[i] + ", ");
-                }
-                else
-                {
-                    Console.Write(numeros[i]);
-                }
-            }
+            exibir(numeros);
 
             Console.WriteLine();
             Console.WriteLine();
@@ -184,18 +188,8 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
             removerItem(ref numeros, ref remover);
 
             Console.Write("Valor com o número removido: ");
-            for (int i = 0; i < numeros.Length; i++)
-            {
-                if (i < numeros.Length - 1)
-                {
-                    Console.Write(numeros[i] + ", ");
-                }
-                else
-                {
-                    Console.Write(numeros[i]);
-                }
+            exibir(numeros);
 
-            }
             Console.WriteLine();
         }
     }
