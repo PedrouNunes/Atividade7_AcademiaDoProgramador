@@ -88,17 +88,41 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
                 }
 
             }
+            static void removerItem(ref double[] numeros, ref double excluir)
+            {
+                int numeroParaRemover = 0, j = 0;
+
+                for (int i = 0; i < numeros.Length; i++)
+                {
+                    if (numeros[i] == excluir)
+                    {
+                        numeroParaRemover = numeroParaRemover + 1;
+                    }
+                }
+
+                double[] listaComORemovido = new double[numeros.Length - numeroParaRemover];
+
+                for (int i = 0; i < numeros.Length; i++)
+                {
+                    if(numeros[i] != excluir){
+                        listaComORemovido[j] = numeros[i];
+                        j = j + 1;
+            }
+                }
+                numeros = listaComORemovido;
+
+            }
 
             double[] numeros = new double[10];
             double maior = 0;
-            double menor;
-
+            double menor;         
+          
             for (int i = 0; i < 10; i++)
             {
                 Console.Write("Digite o numero " + i + ": ");
                 numeros[i] = Convert.ToDouble(Console.ReadLine());
             }
-
+            
             maiorTestagem(ref maior, ref numeros);
             Console.WriteLine();
             Console.Write("O maior numero é o: " + maior);
@@ -147,23 +171,32 @@ namespace Atividade7_AcademiadoProgramador.ConsoleApp
                 {
                     Console.Write(numeros[i]);
                 }
-
             }
 
             Console.WriteLine();
             Console.WriteLine();
+           
+            Console.Write("Digite um valor para ser removido: ");
+            double remover = Convert.ToDouble(Console.ReadLine());
 
-            //char[] remove = numeros.ToArray();
-            //Console.Write("Digite um valor para ser removido: ");
-            //double remover = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine();
 
-            //numeros = numeros.Where((source, numeros), numeros != remover).ToArray();
+            removerItem(ref numeros, ref remover);
 
-            //foreach (double remover in numeros)
-            //{
-            //    Console.WriteLine(valu);
-            //}
+            Console.Write("Valor com o número removido: ");
+            for (int i = 0; i < numeros.Length; i++)
+            {
+                if (i < numeros.Length - 1)
+                {
+                    Console.Write(numeros[i] + ", ");
+                }
+                else
+                {
+                    Console.Write(numeros[i]);
+                }
 
+            }
+            Console.WriteLine();
         }
     }
 }
